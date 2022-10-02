@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32901.215
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MikyAuth.API", "MikyAuth.API\MikyAuth.API.csproj", "{D2B08B91-5368-4A33-91DF-57BE32F4328F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MikyAuth.Library", "MikyAuth.Library\MikyAuth.Library.csproj", "{2BAE3389-10C9-4351-9DEF-87114000837D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D2B08B91-5368-4A33-91DF-57BE32F4328F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D2B08B91-5368-4A33-91DF-57BE32F4328F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D2B08B91-5368-4A33-91DF-57BE32F4328F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D2B08B91-5368-4A33-91DF-57BE32F4328F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2BAE3389-10C9-4351-9DEF-87114000837D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2BAE3389-10C9-4351-9DEF-87114000837D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2BAE3389-10C9-4351-9DEF-87114000837D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2BAE3389-10C9-4351-9DEF-87114000837D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {FC06531A-9641-4EC2-BEE3-17D0CA0C9B20}
+	EndGlobalSection
+EndGlobal
