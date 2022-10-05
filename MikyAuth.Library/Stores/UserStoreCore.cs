@@ -26,10 +26,10 @@ internal sealed class UserStore : IUserStore<AuthUser>
         => Task.FromResult(user.NormalizedUserName);
     public Task<string> GetUserIdAsync(AuthUser user, CancellationToken cancellationToken)
         => Task.FromResult(user.Id);
-    public Task<string> GetUserNameAsync(AuthUser user, CancellationToken cancellationToken) 
+    public Task<string> GetUserNameAsync(AuthUser user, CancellationToken cancellationToken)
         => Task.FromResult(user.UserName);
 
-    public Task SetNormalizedUserNameAsync(AuthUser user, string normalizedName, CancellationToken cancellationToken) 
+    public Task SetNormalizedUserNameAsync(AuthUser user, string normalizedName, CancellationToken cancellationToken)
         => Task.FromResult(user.NormalizedUserName = normalizedName);
     public Task SetUserNameAsync(AuthUser user, string userName, CancellationToken cancellationToken) => throw new NotImplementedException();
     public Task<IdentityResult> UpdateAsync(AuthUser user, CancellationToken cancellationToken)
