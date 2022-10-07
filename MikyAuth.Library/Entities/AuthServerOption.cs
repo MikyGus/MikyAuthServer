@@ -1,4 +1,4 @@
-﻿namespace AuthServer.Library.Entities;
+﻿namespace MikyAuth.Library.Entities;
 
 public class AuthServerOption
 {

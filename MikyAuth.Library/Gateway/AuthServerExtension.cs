@@ -1,12 +1,13 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Dapper;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.IdentityModel.Tokens;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.IdentityModel.Tokens;
+using MikyAuth.Library.Converters;
 using MikyAuth.Library.Entities;
+using MikyAuth.Library.PersistentStorage;
 using MikyAuth.Library.Stores;
 using System.Text;
-using MikyAuth.Library.Converters;
-using AuthServer.Library.Entities;
 
 namespace MikyAuth.Library.Gateway;
 public static class AuthServerExtension
@@ -18,8 +19,13 @@ public static class AuthServerExtension
         // Configurations
         _ = services.Configure(options);
 
+        SqlMapper.AddTypeHandler(new MySqlGuidTypeHandler());
+        SqlMapper.RemoveTypeMap(typeof(Guid));
+        SqlMapper.RemoveTypeMap(typeof(Guid?));
+
         //AuthServer
         services = services.AddScoped<IAuthServerGate, AuthServerGate>();
+        services = services.AddSingleton<IDbAccess, DbAccessMySql>();
 
         //Identity
         services = services.AddScoped<ILookupNormalizer, StringNormalizer>();

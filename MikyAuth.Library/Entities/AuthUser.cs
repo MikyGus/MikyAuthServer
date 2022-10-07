@@ -1,7 +1,7 @@
 ﻿namespace MikyAuth.Library.Entities;
-internal sealed class AuthUser
+internal class AuthUser
 {
-    public string Id { get; set; } = Guid.NewGuid().ToString();
+    public Guid Id { get; set; } = Guid.NewGuid();
     public string UserName { get; set; } = string.Empty;
     public string NormalizedUserName { get; set; } = string.Empty;
 
