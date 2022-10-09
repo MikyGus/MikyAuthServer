@@ -13,7 +13,7 @@ internal sealed class UserStore : IUserStore<AuthUser>
 
     public Task<IdentityResult> CreateAsync(AuthUser user, CancellationToken cancellationToken)
     {
-        return Task.FromResult(IdentityResult.Success);
+        return _dbAccess.CreateUserAsync(user);
     }
 
     public Task<IdentityResult> DeleteAsync(AuthUser user, CancellationToken cancellationToken) => throw new NotImplementedException();
@@ -23,11 +23,8 @@ internal sealed class UserStore : IUserStore<AuthUser>
     }
 
     public Task<AuthUser> FindByIdAsync(string userId, CancellationToken cancellationToken) => throw new NotImplementedException();
-    public Task<AuthUser> FindByNameAsync(string normalizedUserName, CancellationToken cancellationToken)
-    {
-        var TaskUser = Task.FromResult(_dbAccess.FindUser(normalizedUserName));
-        return TaskUser;
-    }
+    public Task<AuthUser> FindByNameAsync(string normalizedUserName, CancellationToken cancellationToken) 
+        => Task.FromResult(_dbAccess.FindUser(normalizedUserName));
 
     public Task<string> GetNormalizedUserNameAsync(AuthUser user, CancellationToken cancellationToken)
         => Task.FromResult(user.NormalizedUserName);

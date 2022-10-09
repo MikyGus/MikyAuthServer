@@ -14,13 +14,11 @@ internal sealed class AuthServerGate : IAuthServerGate
     {
         AuthUser user = new AuthUser()
         {
-            UserName = "Miky",
-            //NormalizedUserName = "miky"
+            //Id = Guid.NewGuid(),
+            UserName = newUser.Username,
+            //NormalizedUserName = newUser.Username.Normalize().ToLower(),
         };
         var result = await _userManager.CreateAsync(user);
-        if (result.Succeeded)
-        {
-            var finalResult = await _userManager.UpdateAsync(user);
-        }
+
     }
 }
