@@ -1,12 +1,19 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using MikyAuth.Library.Entities;
+using MikyAuth.Library.PersistentStorage;
 
 namespace MikyAuth.Library.Stores;
 internal sealed class UserStore : IUserStore<AuthUser>
 {
+    private IDbAccess _dbAccess;
+    public UserStore(IDbAccess dbAccess)
+    {
+        _dbAccess = dbAccess;
+    }
+
     public Task<IdentityResult> CreateAsync(AuthUser user, CancellationToken cancellationToken)
     {
-        return Task.FromResult(IdentityResult.Success);
+        return _dbAccess.CreateUserAsync(user);
     }
 
     public Task<IdentityResult> DeleteAsync(AuthUser user, CancellationToken cancellationToken) => throw new NotImplementedException();
@@ -16,16 +23,13 @@ internal sealed class UserStore : IUserStore<AuthUser>
     }
 
     public Task<AuthUser> FindByIdAsync(string userId, CancellationToken cancellationToken) => throw new NotImplementedException();
-    public Task<AuthUser> FindByNameAsync(string normalizedUserName, CancellationToken cancellationToken)
-    {
-        //TODO: Get info from DB!
-        return Task.FromResult<AuthUser>(null);
-    }
+    public Task<AuthUser> FindByNameAsync(string normalizedUserName, CancellationToken cancellationToken) 
+        => Task.FromResult(_dbAccess.FindUser(normalizedUserName));
 
     public Task<string> GetNormalizedUserNameAsync(AuthUser user, CancellationToken cancellationToken)
         => Task.FromResult(user.NormalizedUserName);
     public Task<string> GetUserIdAsync(AuthUser user, CancellationToken cancellationToken)
-        => Task.FromResult(user.Id);
+        => Task.FromResult(user.Id.ToString());
     public Task<string> GetUserNameAsync(AuthUser user, CancellationToken cancellationToken)
         => Task.FromResult(user.UserName);
 
