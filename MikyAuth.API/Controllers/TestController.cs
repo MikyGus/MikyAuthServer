@@ -13,11 +13,11 @@ public class TestController : ControllerBase
         _authServerGate = authServerGate;
     }
 
-    [HttpGet]
+    [HttpPost]
     public async Task<IActionResult> AuthServerGate(UserCreateDto newUser)
     {
         await _authServerGate.CreateUser(newUser);
-        return Ok();
+        return Ok("Yay");
     }
 
     [Authorize]
