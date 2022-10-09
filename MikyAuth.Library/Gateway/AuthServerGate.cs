@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Identity;
+using MikyAuth.Library.Converters;
 using MikyAuth.Library.Entities;
 
 namespace MikyAuth.Library.Gateway;
@@ -12,12 +13,7 @@ internal sealed class AuthServerGate : IAuthServerGate
 
     public async Task CreateUser(UserCreateDto newUser)
     {
-        AuthUser user = new AuthUser()
-        {
-            //Id = Guid.NewGuid(),
-            UserName = newUser.Username,
-            //NormalizedUserName = newUser.Username.Normalize().ToLower(),
-        };
+        AuthUser user = newUser.ConvertToAuthUser();
         var result = await _userManager.CreateAsync(user);
 
     }
